@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BeforeAfter Example</title>
+	<link rel="stylesheet" href="css/BeforeAfter.css">
+</head>
+<body>
+	<div style="width:90%;margin:0 auto; max-width:845px" class="blueprint horizontal-center-absolute">
+		<img class="img-responsive js-image-background" src="images/racebikeNaked.png">
+		<img class="img-responsive js-image-mask" src="images/racebike.png">
+	</div>
+	<script src="scripts/beforeafter.js"></script>
+	<script>
+		(function() {
+			console.log('running');
+			var beforeAfter = new BeforeAfter({el:document.getElementsByClassName('blueprint')[0],options:{skew:10}});
+
+		})();
+	</script>
+</body>
+</html>
