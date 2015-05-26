@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="css/BeforeAfter.css">
 </head>
 <body>
-	<div style="width:90%;margin:0 auto; max-width:845px" class="blueprint horizontal-center-absolute">
+	<div style="width:90%;margin:0 auto; max-width:845px" id="blueprint">
 		<img class="img-responsive js-image-background" src="images/racebikeNaked.png">
 		<img class="img-responsive js-image-mask" src="images/racebike.png">
 	</div>
@@ -16,7 +16,7 @@
 	<script>
 		(function() {
 			console.log('running');
-			var beforeAfter = new BeforeAfter({el:document.getElementsByClassName('blueprint')[0],options:{skew:10}});
+			var beforeAfter = new BeforeAfter({el:document.getElementById('blueprint'),options:{skew:0,border:'solid 6px '}});
 
 		})();
 	</script>

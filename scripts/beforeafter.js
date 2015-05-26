@@ -34,11 +34,16 @@
 
  var styleWrapper = function(element,options){
    var skew = options.skew|undefined;
+   var border = options.border;
+
    if(skew){
     styleWithVendorPrefixes('transform','skew('+skew+'deg)',mask);
     styleWithVendorPrefixes('transform','skew('+skew+'deg)',background);
     styleWithVendorPrefixes('transform','skew('+-skew+'deg)',maskWrapper);
     styleWithVendorPrefixes('transform','skew('+-skew+'deg)',backgroundWrapper);
+  }
+  if(border){
+      maskWrapper.style['border-right']= border;
   }
 };
 var styleWithVendorPrefixes=function(styleProperty, styleValue, element){
