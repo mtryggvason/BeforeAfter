@@ -1,57 +1,59 @@
-(function($) {
+(function() {
   'use strict';
-  var containerHeight;
-  var containerWidth;
-  var imageMask;
-  var imageBackground;
-  var maskWrapper;
-  var backgroundWrapper;
-  var mask;
-  var background;
-  var container;
-  var wrapperElement;
-  var options = {
-    leftgap: 20,
-    rightgap: 20,
-    reveal: 0.5,
-    button:true,
-    responsive:true,
-  };
+
   var BeforeAfter = function(args){
-   options =  extendOptions({}, options, args.options);
-   container = args.el;
-   imageMask = container.getElementsByClassName('js-image-mask')[0];
-   imageBackground = container.getElementsByClassName('js-image-background')[0];
-   containerWidth = imageMask.width;
-   containerHeight = imageMask.height;
-   imageBackground.style.display = 'none';
-   imageMask.style.display = 'none';
-   addEvents();
-   wrapperElement = createWrapper();
-   styleWrapper(wrapperElement, args.options);
-   container.appendChild(wrapperElement);
- };
+    var containerHeight;
+    var containerWidth;
+    var imageMask;
+    var imageBackground;
+    var maskWrapper;
+    var backgroundWrapper;
+    var mask;
+    var background;
+    var container;
+    var wrapperElement;
+    var options = {
+      leftgap: 20,
+      rightgap: 20,
+      reveal: 0.5,
+      button:true,
+      responsive:true,
+    };
+    var init = function(){
+      options =  extendOptions({}, options, args.options);
+      container = args.el;
+      imageMask = container.getElementsByClassName('js-image-mask')[0];
+      imageBackground = container.getElementsByClassName('js-image-background')[0];
+      containerWidth = imageMask.width;
+      containerHeight = imageMask.height;
+      imageBackground.style.display = 'none';
+      imageMask.style.display = 'none';
+      addEvents();
+      wrapperElement = createWrapper();
+      styleWrapper(wrapperElement, args.options);
+      container.appendChild(wrapperElement);
+    }
+    var styleWrapper = function(element,options){
+     var skew = options.skew|undefined;
+     var border = options.border;
 
- var styleWrapper = function(element,options){
-   var skew = options.skew|undefined;
-   var border = options.border;
-
-   if(skew){
-    styleWithVendorPrefixes('transform','skew('+skew+'deg)',mask);
-    styleWithVendorPrefixes('transform','skew('+skew+'deg)',background);
-    styleWithVendorPrefixes('transform','skew('+-skew+'deg)',maskWrapper);
-    styleWithVendorPrefixes('transform','skew('+-skew+'deg)',backgroundWrapper);
-  }
-  if(border){
+     if(skew){
+      styleWithVendorPrefixes('transform','skew('+skew+'deg)',mask);
+      styleWithVendorPrefixes('transform','skew('+skew+'deg)',background);
+      styleWithVendorPrefixes('transform','skew('+-skew+'deg)',maskWrapper);
+      styleWithVendorPrefixes('transform','skew('+-skew+'deg)',backgroundWrapper);
+    }
+    if(border){
       maskWrapper.style['border-right']= border;
+    }
+  };
+
+  var styleWithVendorPrefixes=function(styleProperty, styleValue, element){
+   var prefixes = ['-webkit','-moz','-ms',''];
+   for(var i =0; i<prefixes.length;i++){
+    var prefix = prefixes[i];
+    element.style[prefix+styleProperty]=styleValue;
   }
-};
-var styleWithVendorPrefixes=function(styleProperty, styleValue, element){
- var prefixes = ['-webkit','-moz','-ms',''];
- for(var i =0; i<prefixes.length;i++){
-  var prefix = prefixes[i];
-  element.style[prefix+styleProperty]=styleValue;
-}
 };
 
 var extendOptions = function(out) {
@@ -163,8 +165,6 @@ var handleResize= function(){
   mask.style.width=containerWidth+'px';
   background.style.width=containerWidth+'px';
   background.style.height=containerHeight+'px';
-
-
   mask.style['background-size']= containerWidth+'px '+containerHeight+'px';
   background.style['background-size']= containerWidth+'px '+containerHeight+'px';
 
@@ -185,7 +185,8 @@ var addEvents = function(){
   });
  }
 };
-
+init();
+};
 if (typeof define === 'function' && define.amd) {
   define('beforeafter',[],function () {
     return BeforeAfter;
