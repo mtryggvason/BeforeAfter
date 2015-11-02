@@ -32,16 +32,25 @@
       wrapperElement = createWrapper();
       styleWrapper(wrapperElement, args.options);
       container.appendChild(wrapperElement);
+      maskWrapper.style.width=options.reveal*100+'%';
+      backgroundWrapper.style.width=(100-(options.reveal*100))+'%';
+      handleResize();
     }
     var styleWrapper = function(element,options){
      var skew = options.skew|undefined;
      var border = options.border;
-
+     var transition = options.transition;
      if(skew){
       styleWithVendorPrefixes('transform','skew('+skew+'deg)',mask);
       styleWithVendorPrefixes('transform','skew('+skew+'deg)',background);
       styleWithVendorPrefixes('transform','skew('+-skew+'deg)',maskWrapper);
       styleWithVendorPrefixes('transform','skew('+-skew+'deg)',backgroundWrapper);
+    }
+    if(transition){
+      styleWithVendorPrefixes('transition', transition,mask);
+      styleWithVendorPrefixes('transition', transition,background);
+      styleWithVendorPrefixes('transition', transition,maskWrapper);
+      styleWithVendorPrefixes('transition', transition,backgroundWrapper);
     }
     if(border){
       maskWrapper.style['border-right']= border;
@@ -113,7 +122,7 @@ var createWrapper = function(){
  mask.style.height=containerHeight+'px';
  mask.style.width=containerWidth+'px';
  mask.style['background-size']= containerWidth+'px '+containerHeight+'px';
- mask.style['background-image']= 'url(' + imageMask.src + ')';
+ mask.style.backgroundImage= 'url(' + imageMask.src + ')';
 
  maskWrapper.appendChild(mask);
 
@@ -128,8 +137,7 @@ var createWrapper = function(){
  background.style.width=containerWidth+'px';
  background.style.height=containerHeight+'px';
  background.style['background-size']= containerWidth+'px '+containerHeight+'px';
- background.style['background-image']= 'url(' + imageBackground.src + ')';
-
+ background.style.backgroundImage= 'url(' + imageBackground.src + ')';
  backgroundWrapper.appendChild(background);
 
  wrapperElement.appendChild(maskWrapper);
