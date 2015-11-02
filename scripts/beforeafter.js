@@ -53,7 +53,7 @@
       styleWithVendorPrefixes('transition', transition,backgroundWrapper);
     }
     if(border){
-      maskWrapper.style['border-right']= border;
+      maskWrapper.style.borderRight= border;
     }
   };
 
