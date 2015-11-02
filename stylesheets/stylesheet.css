@@ -116,13 +116,14 @@ a {
 .main-content p {
   margin-bottom: 1em; }
 .main-content code {
-  padding: 2px 4px;
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-  font-size: 0.9rem;
-  color: #383e41;
-  background-color: #f3f6fa;
-  border-radius: 0.3rem; 
-
+    padding: 5px 10px;
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    font-size: 0.9rem;
+    color: #383e41;
+    background-color: #f3f6fa;
+    border-radius: 0.3rem;
+    display: block;
+    margin: 10px auto;
 }
 .main-content pre {
   padding: 0.8rem;
