@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/beforeafter.css" media="screen">
   <script src="scripts/beforeafter.js"></script>
   <script>
-  document.addEventListener('load', function(event) { 
+  window.addEventListener('load', function(event) { 
     window.beforeAfter1 = new BeforeAfter({el:document.getElementById('before-after-1'),options:{}});
     window.beforeAfter2 = new BeforeAfter({el:document.getElementById('before-after-2'),options:{skew:5,border:'solid 5px black'}});
   });

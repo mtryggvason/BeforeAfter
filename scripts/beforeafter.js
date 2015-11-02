@@ -122,7 +122,7 @@ var createWrapper = function(){
  mask.style.height=containerHeight+'px';
  mask.style.width=containerWidth+'px';
  mask.style['background-size']= containerWidth+'px '+containerHeight+'px';
- mask.style['background-image']= 'url(' + imageMask.src + ')';
+ mask.style.backgroundImage= 'url(' + imageMask.src + ')';
 
  maskWrapper.appendChild(mask);
 
@@ -137,8 +137,7 @@ var createWrapper = function(){
  background.style.width=containerWidth+'px';
  background.style.height=containerHeight+'px';
  background.style['background-size']= containerWidth+'px '+containerHeight+'px';
- background.style['background-image']= 'url(' + imageBackground.src + ')';
-
+ background.style.backgroundImage= 'url(' + imageBackground.src + ')';
  backgroundWrapper.appendChild(background);
 
  wrapperElement.appendChild(maskWrapper);
