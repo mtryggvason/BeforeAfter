@@ -13,13 +13,12 @@
   <link rel="stylesheet" type="text/css" href="stylesheets/beforeafter.css" media="screen">
   <script src="scripts/beforeafter.js"></script>
   <script>
-   document.addEventListener("DOMContentLoaded", function(event) { 
+  document.addEventListener('Load', function(event) { 
     window.beforeAfter1 = new BeforeAfter({el:document.getElementById('before-after-1'),options:{}});
-     window.beforeAfter2 = new BeforeAfter({el:document.getElementById('before-after-2'),options:{skew:5,border:'solid 5px black'}});
+    window.beforeAfter2 = new BeforeAfter({el:document.getElementById('before-after-2'),options:{skew:5,border:'solid 5px black'}});
+  });
 
-   });
-
- </script>
+</script>
 </head>
 <body>
   <section class="page-header">
@@ -67,7 +66,7 @@
      <h3><a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples and options</h3>
      <code> 
        <br>
-    window.beforeAfter1 = new BeforeAfter({el:document.getElementById('before-after-1'),options:{}});
+       window.beforeAfter1 = new BeforeAfter({el:document.getElementById('before-after-1'),options:{}});
      </code>
      <div id="before-after-1">
       <img class="js-image-background" src="images/lego-after.png" alt="">
