@@ -32,16 +32,25 @@
       wrapperElement = createWrapper();
       styleWrapper(wrapperElement, args.options);
       container.appendChild(wrapperElement);
+      maskWrapper.style.width=options.reveal*100+'%';
+      backgroundWrapper.style.width=(100-(options.reveal*100))+'%';
+      handleResize();
     }
     var styleWrapper = function(element,options){
      var skew = options.skew|undefined;
      var border = options.border;
-
+     var transition = options.transition;
      if(skew){
       styleWithVendorPrefixes('transform','skew('+skew+'deg)',mask);
       styleWithVendorPrefixes('transform','skew('+skew+'deg)',background);
       styleWithVendorPrefixes('transform','skew('+-skew+'deg)',maskWrapper);
       styleWithVendorPrefixes('transform','skew('+-skew+'deg)',backgroundWrapper);
+    }
+    if(transition){
+      styleWithVendorPrefixes('transition', transition,mask);
+      styleWithVendorPrefixes('transition', transition,background);
+      styleWithVendorPrefixes('transition', transition,maskWrapper);
+      styleWithVendorPrefixes('transition', transition,backgroundWrapper);
     }
     if(border){
       maskWrapper.style['border-right']= border;
